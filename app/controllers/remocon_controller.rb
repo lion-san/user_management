@@ -3,6 +3,7 @@ class RemoconController < ApplicationController
   
     @remocon = remocon_params
     @remocon.save
+    render 'save'
   end
 
   private
@@ -10,12 +11,10 @@ class RemoconController < ApplicationController
   def remocon_params
 
     remocon = Remocon.new(params.require(:remocon).permit(:maker))
-    remocon.buttons = []
     
-    params.permit(:buttons).each do |btn|
-      logger.debug(btn)
-      #button = Button.new(btnId: "HOGE", btnCode: "PIYO")
-      remocon.buttons << { :btnId => btn.btnId, :btnCode => btn.btnCode }
+    params["buttons"].each do |btn|
+      button = Button.new(btnId: btn[:btnId],  btnCode: btn[:btnCode])
+      remocon.buttons << button 
     end
     
     return remocon
