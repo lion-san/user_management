@@ -1,5 +1,6 @@
 UserManagement::Application.routes.draw do
-  post "remocon/save"
+  resources :remocons, only:[:index, :show]
+  post "remocons/save"
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

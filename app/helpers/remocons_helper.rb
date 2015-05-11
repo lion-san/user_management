@@ -1,0 +1,2 @@
+module RemoconsHelper
+end

@@ -6,7 +6,7 @@ describe "RemoconPages" do
 
   it "should create remocon by json request" do
     expect do
-      post "/remocon/save", params, { 'CONTENT_TYPE' => "application/json", "Accept" => "application/json" }
+      post "/remocons/save", params, { 'CONTENT_TYPE' => "application/json", "Accept" => "application/json" }
     end.to change(Remocon, :count).by(1) 
   end
 end
