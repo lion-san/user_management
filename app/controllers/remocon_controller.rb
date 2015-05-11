@@ -3,7 +3,8 @@ class RemoconController < ApplicationController
   
     @remocon = remocon_params
     @remocon.save
-    render 'save'
+
+    redirect_to 'save'
   end
 
   private
@@ -11,6 +12,7 @@ class RemoconController < ApplicationController
   def remocon_params
 
     remocon = Remocon.new(params.require(:remocon).permit(:maker))
+    remocon[:userid] = "0000" #hoge@piyo.org
     
     params["buttons"].each do |btn|
       button = Button.new(btnId: btn[:btnId],  btnCode: btn[:btnCode])
