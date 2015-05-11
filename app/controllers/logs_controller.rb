@@ -1,6 +1,13 @@
 class LogsController < ApplicationController
 
   def index
+
+    @logs = Logs.findAll()
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @logs }
+    end
   end
 
 
@@ -8,6 +15,8 @@ class LogsController < ApplicationController
     @log = Log.new(log_params)
     if @log.save
       #OK
+      redirect_to 'index'
+
     else
       #False
     end
