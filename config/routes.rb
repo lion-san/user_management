@@ -1,7 +1,9 @@
 UserManagement::Application.routes.draw do
+  get "logs/index"
   resources :remocons, only:[:index, :show]
   post "remocons/save"
   resources :users
+  resources :logs, only:[:create, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
