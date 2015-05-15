@@ -1,4 +1,7 @@
 class RemoconsController < ApplicationController
+
+  protect_from_forgery with: :null_session
+  
   def index
     @remocons = Remocon.find_by(id: "0000")[:remocons]
       respond_to do |format|
