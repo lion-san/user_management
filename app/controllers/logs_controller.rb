@@ -9,6 +9,7 @@ class LogsController < ApplicationController
       format.json { render :json => @logs.to_json(
         :only => ['time', 'userid', 'action', 'val1', 'val2', ]
       ) }
+      format.csv
     end
   end
 
